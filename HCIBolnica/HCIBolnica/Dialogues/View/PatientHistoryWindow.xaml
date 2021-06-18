@@ -1,0 +1,29 @@
+﻿<Window x:Class="HCIBolnica.Dialogues.View.PatientHistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCIBolnica.Dialogues.View"
+        mc:Ignorable="d"
+        Title="PatientHistoryWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <DataGrid ItemsSource="{Binding Anamnezes}" AutoGenerateColumns="False" Margin="20 10" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                    <DataGridTextColumn Header="ID pacijenta" Binding="{Binding Patient.ID}" />
+                    <DataGridTextColumn Header="Simptomi" Binding="{Binding Simptoms}"/>
+                    <DataGridTextColumn Header="Izvestaj lekara" Binding="{Binding DoctorReport}" />
+                    <DataGridTextColumn Header="Datum prethodnog termina " Binding="{Binding DateOfPreviousAppointment}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button Content="Vrati se" Name="btnGoBack" Command="{Binding CancelCommand}" Margin="200 0 200 0" FontSize="30" Background="LightBlue"/>
+        </Grid>
+    </Grid>
+</Window>

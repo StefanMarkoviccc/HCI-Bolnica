@@ -1,0 +1,41 @@
+﻿<Page x:Class="HCIBolnica.Dialogues.View.RequestForSpecialization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCIBolnica.Dialogues.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RequestForSpecialization">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Zahtev za specijalizaciju" Grid.Row="0" FontSize="40" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Zahtev podnosi:" Grid.Column="0" Grid.Row="0" FontSize="25" Margin="20 30"/>
+            <Label Content="Koju specijalizaciju zelite:" Grid.Column="0" Grid.Row="1" FontSize="25" Margin="20 30"/>
+            <ComboBox ItemsSource="{Binding Doctors}" SelectedValue="{Binding SelectedItem.Doctor}" DisplayMemberPath="Name" SelectedValuePath="Value" Grid.Column="1" Grid.Row="0" FontSize="25" Margin="20 30"/>
+            <ComboBox ItemsSource="{Binding Specializations}" SelectedValue="{Binding SelectedItem.Specialization}" DisplayMemberPath="Name" SelectedValuePath="Value" Grid.Column="1" Grid.Row="1" FontSize="25" Margin="20 30"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="BtnAccept" Command="{Binding OkCommand}" Content="Potvrdi" FontSize="30" Margin="20 10" Background="LightBlue"/>
+            <Button Name="BtnGiveUp" Command="{Binding CancelCommand}" Content="Odustani" FontSize="30" Margin="20 10" Grid.Column="1" Background="LightBlue"/>
+        </Grid>
+    </Grid>
+</Page>

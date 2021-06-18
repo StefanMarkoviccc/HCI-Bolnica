@@ -1,0 +1,2 @@
+aaa|Stefan|Markovic|Milan|1/1/0001 12:00:00 PM|Male|0643580000|1|Divorced||
+Neznam|Mika|Mikic|Stefan|3/15/1997 12:00:00 PM|Male|021489758|2|Married||

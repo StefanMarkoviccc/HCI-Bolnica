@@ -1,0 +1,53 @@
+﻿<Window x:Class="HCIBolnica.Dialogues.View.HospitalMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCIBolnica.Dialogues.View"
+        mc:Ignorable="d"
+        Title="HospitalMainWindow" Height="600" Width="950">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0">
+        <Label Content="Lekar: Elena" FontSize="25"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Button ToolTip="Klikni da se izlogujes." Command="{Binding LogoutCommand}" Name="BtnLogOut" Content="Log out" FontSize="25" Margin="450 2 2 2" Background="IndianRed"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+        <Frame x:Name="MainFrame"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button ToolTip="Klikni da vidis info o lekaru." Name="BtnDoctorAppointment" Command="{Binding DoctorAppointmentCommand}" Content="Termini lekara" Grid.Column="0" FontSize="25" Grid.Row="1" Background="LightBlue"/>
+            <Button ToolTip="Klikni da vidis termine lekara." Name="BtnDoctorInfo" Command="{Binding DoctorInfoCommand}" Content="Info. lekara"  FontSize="25" Grid.Column="0" Grid.Row="0" Background="LightBlue"/>
+            <Button ToolTip="Klikni da vidis zdravsteni karton." Name="BtnHealthCard" Command="{Binding HealthCardCommand}" Content="Zdravstveni karton" Grid.Column="0" Grid.Row="2" FontSize="20" Background="LightBlue"/>
+            <Button ToolTip="Klikni da obavis pregled pacijenta." Name="BtnAppointment" Command="{Binding PatientAppointmentCommand}" Content="Pregled pacijenta" Grid.Column="0" Grid.Row="3" FontSize="25" Background="LightBlue"/>
+            <Button ToolTip="Klikni da obavis proveru lekova." Name="BtnMedicineCheck" Command="{Binding MedicineCheckCommand}" Content="Provera lekova" Grid.Column="0" Grid.Row="4" FontSize="25" Background="LightBlue"/>
+            <Button ToolTip="Klikni da uneses info o inventaru." Name="BtnStafInfo" Command="{Binding StafInfoCommand}" Content="Info. o inventaru" Grid.Column="0" Grid.Row="5" FontSize="25" Background="LightBlue"/>
+            <Button ToolTip="Klikni da posaljes zahtev za specijalizaciju." Name="BtnSpecializationRequest" Command="{Binding SpecializationRequestCommand}" Content="Zahtev za spec." Grid.Column="0" Grid.Row="6" FontSize="25" Background="LightBlue"/>
+            <Button ToolTip="Klikni da posaljes zahtev za odmor." Name="BtnVacationRequest" Command="{Binding VacationRequestCommand}" Content="Zahtev za odmor" Grid.Column="0" Grid.Row="7" FontSize="25" Background="LightBlue"/>
+            <Button ToolTip="Klikni da posaljes zahtev za dobavljanje lekova." Name="BtnRevisionOfRequest" Command="{Binding RevisionOfRequestCommand}" Content="Revizija zahteva" Grid.Column="0" Grid.Row="8" FontSize="25" Background="LightBlue"/>
+            <Button ToolTip="Klikni da napises izvestaj." Name="BtnReport" Command="{Binding ReportCommand}" Content="Napisi izvestaj" Grid.Row="9" FontSize="25" Background="LightBlue"/>
+        </Grid>
+    </Grid>
+    
+</Window>

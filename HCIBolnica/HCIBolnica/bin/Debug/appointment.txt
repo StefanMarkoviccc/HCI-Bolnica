@@ -1,0 +1,8 @@
+08:30|12|1/1/0001 12:00:00 AM|Examination|1||1|False|
+09:30|312|6/24/2021 12:00:00 AM|Operation|10||1|False|
+10:00|45|6/10/2021 8:14:25 AM|Examination|65||1|False|
+09:30|2|6/17/2021 12:00:00 AM|Examination|435678||2|False|
+10:00|23|6/10/2021 8:30:23 AM|Examination|12||2|False|
+10:00|23|6/10/2021 8:30:38 AM|Examination|354||1|False|
+11:30|4|6/17/2021 12:00:00 AM|Examination|22||2|False|
+09:00|4|6/26/2021 12:00:00 AM|Operation|23||1|False|

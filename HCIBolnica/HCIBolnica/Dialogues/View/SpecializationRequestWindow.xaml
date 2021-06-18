@@ -1,0 +1,132 @@
+﻿<Window x:Class="HCIBolnica.Dialogues.View.SpecializationRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCIBolnica.Dialogues.View"
+          xmlns:validators="clr-namespace:HCIBolnica.Validation"
+        mc:Ignorable="d"
+        Title="SpecializationRequestWindow" Height="450" Width="800">
+    <Window.Resources>
+        <validators:EmptyStringValidationRule x:Key="EmptyStringValidationRule"/>
+        <validators:JustNumbersValidationRule x:Key="JustNumbersValidationRule"/>
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1.1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Label Content="Uput za lekara specijalistu" FontSize="40" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Label Content="ID uputa:" FontSize="25"/>
+                <Label Content="Odaberite specijalistu:" Grid.Row="1" FontSize="25"/>
+                <Label Content="Broj zdravstenog kartona:" Grid.Column="0" Grid.Row="2" FontSize="25"/>
+                <Label Content="JMBG:" Grid.Column="0" Grid.Row="3" FontSize="25"/>
+                <Label Content="Razlog uputa:" Grid.Column="0" Grid.Row="4" FontSize="25"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="20 5">
+                    <TextBox.Text>
+                        <Binding Path="SelectedItem.ID" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validators:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+                <ComboBox ItemsSource="{Binding Specializations}" SelectedValue="{Binding SelectedItem.Specialization}" DisplayMemberPath="Name" SelectedValuePath="Value" Grid.Column="1" Grid.Row="1" Margin="20 5"/>
+                <TextBox Text="{Binding SelectedItem.HealthCardNumber}" Name="txtHelthCardNumber" Grid.Column="1" Grid.Row="2" Margin="20 5">
+                    
+                </TextBox>
+                <TextBox Name="cmbJMBG" Grid.Column="1" Grid.Row="3" Margin="20 5">
+                    <TextBox.Text>
+                        <Binding Path="SelectedItem.JMBG" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validators:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                                <validators:JustNumbersValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+                <TextBox Name="txtReasonForSpecialist" Grid.Column="1" Grid.Row="4" Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="SelectedItem.ReasonForSpecialist" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validators:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="BtnAccept" Command="{Binding OkCommand}" Content="Potvrdi" Grid.Column="0" Margin="20 10" FontSize="30" Background="LightBlue"/>
+                <Button Name="BtnCancel" Command="{Binding CancelCommand}" Content="Odustani" Grid.Column="1" Margin="20 10" FontSize="30" Background="LightBlue"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

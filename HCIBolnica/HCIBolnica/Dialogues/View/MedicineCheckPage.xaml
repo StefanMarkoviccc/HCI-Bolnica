@@ -1,0 +1,124 @@
+﻿<Page x:Class="HCIBolnica.Dialogues.View.MedicineCheckPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCIBolnica.Dialogues.View"
+      xmlns:validators="clr-namespace:HCIBolnica.Validation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MedicineCheckPage">
+    <Page.Resources>
+        <validators:EmptyStringValidationRule x:Key="EmptyStringValidationRule"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Content="Kolicina i ispravnost lekova" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Ime leka:" Grid.Column="0" Grid.Row="0" FontSize="25"/>
+            <Label Content="Gramaza(mg):" Grid.Column="0" Grid.Row="1" FontSize="25"/>
+            <Label Content="Kolicina(kom.)" Grid.Column="0" Grid.Row="2" FontSize="25"/>
+            <Label Content="Sastojci leka:" Grid.Column="0" Grid.Row="4" FontSize="25"/>
+            <ComboBox ItemsSource="{Binding Medicines}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding SelectedItem}" Name="cmbMedicineName" Grid.Column="1" Grid.Row="0" Margin="20 10"/>
+            <TextBox  Name="txtQuantity" Grid.Column="1" Grid.Row="1" Margin="20 10">
+                <TextBox.Text>
+                    <Binding Path="SelectedItem.QuantityOfMedicine" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validators:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+            <TextBox Name="txtPeriodOfTakingTheDrug" Grid.Column="1" Grid.Row="2" Margin="20 10">
+                <TextBox.Text>
+                    <Binding Path="SelectedItem.PeriodOfTakingTheDrug" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validators:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+            <TextBox Name="txtDrugIngredient" Grid.Column="1" Grid.Row="4" Margin="20 10">
+                <TextBox.Text>
+                    <Binding Path="SelectedItem.DrugIngredients" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validators:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <AdornedElementPlaceholder Grid.Row="0" x:Name="textBox"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button ToolTip="Klikni da potvrdis kolicinu." Name="BtnConfirmTheQuantity" Grid.Column="0" Command="{Binding OkCommand}" Content="Potvrdi kolicniu" FontSize="30" Margin="20 10" Background="LightBlue"/>
+            <Button ToolTip="Klikni da odustanes." Name="BtnBack" Grid.Column="1"  Command="{Binding CancelCommand}" Content="Vrati se" FontSize="30"  Margin="20 10" Background="LightBlue"/>
+        </Grid>
+    </Grid>
+</Page>

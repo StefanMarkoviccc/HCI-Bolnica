@@ -1,0 +1,50 @@
+﻿<Page x:Class="HCIBolnica.Dialogues.View.RequestForDaysOff"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCIBolnica.Dialogues.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RequestForDaysOff">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Zahtev za slobodne dane" Grid.Row="0" FontSize="40" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="ID zahteva:" FontSize="25"/>
+            <Label Content="Zahtev podnosi:" Grid.Column="0" Grid.Row="1" FontSize="25"/>
+            <Label Content="Pocetak slobodnih dana:" Grid.Column="0" Grid.Row="2" FontSize="25"/>
+            <Label Content="Kraj slobodnih dana:" Grid.Row="3" FontSize="25"/>
+            <Label Content="Razlog:" Grid.Row="5" FontSize="25"/>
+            <TextBox Text="{Binding SelectedItem.ID}" Name="txtID" Grid.Column="1" Grid.Row="0" Margin="5"/>
+            <ComboBox ItemsSource="{Binding Doctors}" SelectedValue="{Binding SelectedItem.Doctor}" DisplayMemberPath="Name" SelectedValuePath="Value" Grid.Column="1" Grid.Row="1" FontSize="25" Margin="5"/>
+            <DatePicker SelectedDate="{Binding SelectedItem.BeginningOfHoliday}" Name="datePickerVacationStart" Grid.Column="1" Grid.Row="2" FontSize="25" Margin="5"/>
+            <DatePicker SelectedDate="{Binding SelectedItem.EndOfHoliday}" Name="datePickerVacationEnd" Grid.Column="1" Grid.Row="3" FontSize="25" Margin="5"/>
+            <TextBox Text="{Binding SelectedItem.RequestDescription}" Name="txtReason" Grid.Column="1" Grid.Row="4" Margin="5 0"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button ToolTip="Klikno da potvrdis slobodne dane." Name="BtnAccept" Command="{Binding OkCommand}" Content="Potvrdi" FontSize="30" Margin="20 10" Background="LightBlue"/>
+            <Button Name="BtnGiveUp" Command="{Binding CancelCommand}" Content="Odustani" FontSize="30" Margin="20 10" Grid.Column="1" Background="LightBlue"/>
+        </Grid>
+    </Grid>
+</Page>

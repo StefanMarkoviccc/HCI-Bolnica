@@ -1,0 +1,11 @@
+123|Cardiologist|1|123456789|ads|
+5|Surgeon|1|123456789|Boli ga rruka|
+123342|Pediatrician|1|123456789|sdghefj|
+1|Dentist|1|123456789|qq|
+1|Dentist|1|123456789|qq|
+1|Dentist|1|123456789|qq|
+3|Surgeon|2|9876543345|33|
+6|GeneralPractice|1|123456789|rrr|
+7|Dermatologist|2|9876543345|eee|
+3|Neurosurgeon|2|9876543345|erethwr|
+12435|Surgeon|2|9876543345|dsfghe|
